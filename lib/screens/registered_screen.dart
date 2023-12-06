@@ -33,6 +33,8 @@ class RegisteredScreen extends StatelessWidget {
               children: [
                 GridView(
                   shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  physics: NeverScrollableScrollPhysics(),
                   children: [
                     InkWell(
                       child: Container(
