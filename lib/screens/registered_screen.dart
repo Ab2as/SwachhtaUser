@@ -34,7 +34,11 @@ class RegisteredScreen extends StatelessWidget {
                 GridView(
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20),
                   children: [
                     InkWell(
                       child: Container(
@@ -42,8 +46,8 @@ class RegisteredScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           color: Color.fromARGB(255, 8, 12, 63),
                           image: DecorationImage(
-                            image:
-                                AssetImage('assets/images/public_urinate2.jpg'),
+                            image: const AssetImage(
+                                'assets/images/public_urinate2.jpg'),
                             colorFilter: ColorFilter.mode(
                               Colors.white.withOpacity(0.6),
                               BlendMode.modulate,
@@ -51,10 +55,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 60,
                               ),
                               Text(
@@ -89,10 +93,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 60,
                               ),
                               Text(
@@ -127,10 +131,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 75,
                               ),
                               Text(
@@ -165,10 +169,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 60,
                               ),
                               Text(
@@ -203,10 +207,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 75,
                               ),
                               Text(
@@ -241,10 +245,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 75,
                               ),
                               Text(
@@ -279,10 +283,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 60,
                               ),
                               Text(
@@ -317,10 +321,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 60,
                               ),
                               Text(
@@ -355,10 +359,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 60,
                               ),
                               Text(
@@ -394,10 +398,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 60,
                               ),
                               Text(
@@ -432,10 +436,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 60,
                               ),
                               Text(
@@ -470,10 +474,10 @@ class RegisteredScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: SingleChildScrollView(
+                        child: const SingleChildScrollView(
                           child: Column(
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 60,
                               ),
                               Text(
@@ -495,10 +499,6 @@ class RegisteredScreen extends StatelessWidget {
                       },
                     ),
                   ],
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 20),
                 ),
               ],
             ),
