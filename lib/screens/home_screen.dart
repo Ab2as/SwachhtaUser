@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:swachhta_app/screens/activity_page.dart';
+import 'package:swachhta_app/screens/address_page.dart';
 import 'package:swachhta_app/screens/profile_fill_screen.dart';
 import 'package:swachhta_app/screens/registered_screen.dart';
+import 'package:swachhta_app/screens/reported_page.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -27,6 +30,24 @@ class HomeScreen extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => ProfileScreen()));
                 },
                 child: Text("Profile Fill Page")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ReportedScreen()));
+                },
+                child: Text("Reported Screen")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ActivityScreen()));
+                },
+                child: Text("Activity Screen")),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => AddressScreen()));
+                },
+                child: Text("Address Screen")),
           ],
         ),
       ),

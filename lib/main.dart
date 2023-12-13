@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:swachhta_app/screens/splash_screen.dart';
+import 'package:swachhta_app/screens/home_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: const HomeScreen(),
     );
   }
 }
