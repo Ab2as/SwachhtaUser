@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dob_input_field/dob_input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:swachhta_app/screens/pages/tabs_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -123,6 +124,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 TextFormField(
                   controller: _mobileno,
                   cursorColor: Colors.white,
+                  keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.white.withOpacity(0.9)),
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
@@ -142,7 +144,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty ||
-                        !RegExp(r"^\+?0[0-9]{10}$").hasMatch(value!)) {
+                        !RegExp(r"^[0-9]{10}$").hasMatch(value!)) {
                       return "Enter correct mobile number";
                     } else {
                       return null;
@@ -158,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Icons.person_outline,
                         color: Colors.white70,
                       ),
-                      labelText: "Enter your Sex",
+                      labelText: "Enter your Gender",
                       labelStyle:
                           TextStyle(color: Colors.white.withOpacity(0.9)),
                       floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -249,6 +251,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 TextFormField(
                   controller: _pincode,
+                  keyboardType: TextInputType.number,
                   cursorColor: Colors.white,
                   style: TextStyle(color: Colors.white.withOpacity(0.9)),
                   decoration: InputDecoration(
@@ -336,8 +339,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       } catch (_) {
                         message = "Error";
                       }
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text(message)));
+                      if (message == "Successful") {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => TabsScreen(userId: 'userId'),
+                        ));
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(SnackBar(content: Text(message)));
+                      }
                     }
                   },
                   child: Text("Submit"),

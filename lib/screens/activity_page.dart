@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swachhta_app/screens/pages/tabs_screen.dart';
 
 class ActivityScreen extends StatefulWidget {
   const ActivityScreen({super.key});
@@ -22,7 +23,8 @@ class _ActivityScreenState extends State<ActivityScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => TabsScreen(userId: '')));
             },
             icon: Icon(
               Icons.close,
