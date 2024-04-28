@@ -28,19 +28,32 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter:
+    sdk: flutter
   animated_text_kit: ^4.2.2
   cloud_firestore: ^4.13.3
   cupertino_icons: ^1.0.2
   dob_input_field: ^2.0.0
   firebase_core: ^2.24.0
-  flutter:
-    sdk: flutter
+  firebase_storage: ^11.7.4
+  firebase_database: ^10.5.4
+
   # flutter_ajanuw_router: ^0.3.5
   fluttertoast: ^8.2.4
   image_picker: ^1.0.5
   firebase_auth: ^4.15.3
-  fluid_bottom_nav_bar: ^1.4.0
   shared_preferences: ^2.2.0
+  webview_flutter: ^4.7.0
+  line_awesome_flutter: ^2.0.0
+  fluid_bottom_nav_bar: ^1.4.0
+  get: ^4.6.6
+  connectivity_plus: ^5.0.2
+  hive: ^2.2.3
+  transition: ^2.0.2
+  provider: ^6.1.2
+  shimmer: ^3.0.0
+
+
 
 dev_dependencies:
   flutter_lints: ^2.0.0

@@ -1,10 +1,8 @@
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
-// import 'package:swachhta_app/pages/reports_screen.dart';
+import 'package:swachhta_app/profile/profile_screen.dart';
 import 'package:swachhta_app/screens/activity_page.dart';
-import 'package:swachhta_app/screens/pages/home_screen.dart';
-import 'package:swachhta_app/screens/pages/my_profile.dart';
-// import 'package:swachhta_app/pages/resister_complaint.dart';
+import 'package:swachhta_app/screens/homescreen/home_screen_worker.dart';
 import 'package:swachhta_app/screens/registered_screen.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -31,10 +29,7 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Widget activePage = HomeScreen(
-      userId: widget.userId,
-      //changeIndex: changeIndex,
-    );
+    Widget activePage = HomeScreenWorker();
 
     if (_selectedPageIndex == 1) {
       activePage = RegisteredScreen();
@@ -43,7 +38,7 @@ class _TabsScreenState extends State<TabsScreen> {
       activePage = ActivityScreen();
     }
     if (_selectedPageIndex == 3) {
-      activePage = MyProfile();
+      activePage = ProfileScreen();
     }
 
     return Scaffold(
@@ -54,26 +49,26 @@ class _TabsScreenState extends State<TabsScreen> {
         icons: [
           FluidNavBarIcon(
               icon: Icons.home,
-              backgroundColor: Color(0xFF4285F4),
+              backgroundColor: const Color(0xFFFFFFFF),
               extras: {"label": "home"}),
           FluidNavBarIcon(
               icon: Icons.add,
-              backgroundColor: Color(0xFFEC4134),
+              backgroundColor: const Color(0xFFFFFFFF),
               extras: {"label": "Register"}),
           FluidNavBarIcon(
             icon: Icons.report,
-            backgroundColor: Color(0xFF34A950),
+            backgroundColor: const Color(0xFFFFFFFF),
             extras: {"label": "Report"},
           ),
           FluidNavBarIcon(
             icon: Icons.person,
-            backgroundColor: Color.fromARGB(255, 123, 198, 228),
+            backgroundColor: const Color(0xFFFFFFFF),
             extras: {"label": "Profile"},
           ),
         ],
         style: const FluidNavBarStyle(
-            iconUnselectedForegroundColor: Colors.white,
-            barBackgroundColor: Colors.black),
+            iconUnselectedForegroundColor: Colors.black,
+            barBackgroundColor: const Color(0xFFFFFFFF)),
       ),
     );
   }

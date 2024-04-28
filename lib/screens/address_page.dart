@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:swachhta_app/screens/app_image_pick.dart';
@@ -21,47 +23,6 @@ class _AddressScreenState extends State<AddressScreen> {
 
   TextEditingController _address = TextEditingController();
   TextEditingController _description = TextEditingController();
-
-  // Future<Position> _determinePosition() async {
-  //   bool serviceEnabled;
-
-  //   LocationPermission permission;
-
-  //   serviceEnabled = await Geolocator.isLocationServiceEnabled();
-
-  //   if (!serviceEnabled) {
-  //     await Geolocator.openLocationSettings();
-
-  //     return Future.error('Location services are disabled.');
-  //   }
-
-  //   permission = await Geolocator.checkPermission();
-
-  //   if (permission == LocationPermission.denied) {
-  //     permission = await Geolocator.requestPermission();
-
-  //     if (permission == LocationPermission.denied) {
-  //       return Future.error('Location permissions are denied');
-  //     }
-  //   }
-
-  //   if (permission == LocationPermission.deniedForever) {
-  //     return Future.error(
-  //         'Location permissions are permanently denied, we cannot request permissions.');
-  //   }
-
-  //   return await Geolocator.getCurrentPosition();
-  // }
-
-  // Future<void> GetAddressFromLatLong(Position position) async {
-  //   List<Placemark> placemark =
-  //       await placemarkFromCoordinates(position.latitude, position.longitude);
-  //   print(placemark);
-  //   Placemark place = placemark[0];
-  //   Address =
-  //       '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
-  //   setState(() {});
-  // }
   String? selectedValue = null;
 
   List<DropdownMenuItem<String>> get dropdownItems {
@@ -95,15 +56,21 @@ class _AddressScreenState extends State<AddressScreen> {
     return menuItems;
   }
 
+  FirebaseStorage storage = FirebaseStorage.instance;
+
   File? image;
 
   pickImage(ImageSource source) {
-    AppImagePicker(source: source).pick(onPick: (File? image) {
+    AppImagePicker(source: source).pick(onPick: (File? img) {
       setState(() {
-        this.image = image;
+        this.image = img;
       });
     });
   }
+
+  // void saveImage() async {
+  //   String resp = await StoreData().saveData(file: image!);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -120,186 +87,233 @@ class _AddressScreenState extends State<AddressScreen> {
         backgroundColor: Colors.grey,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Colors.grey, Colors.black12],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight)),
-          child: Center(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 30,
-                ),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20, left: 20),
-                        child: DropdownButtonFormField(
-                            isExpanded: true,
-                            decoration: InputDecoration(
-                              prefixIcon: const Icon(
-                                Icons.person_outline,
-                                color: Colors.white70,
-                              ),
-                              labelText: "Select Category",
-                              labelStyle: TextStyle(
-                                  color: Colors.white.withOpacity(0.9)),
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.never,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    width: 0, style: BorderStyle.none),
-
-                                // BorderSide(color: Colors.blue, width: 2),
-
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              border: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    width: 0, style: BorderStyle.none),
-
-                                // BorderSide(color: Colors.blue, width: 2),
-
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              filled: true,
-                              fillColor: Colors.white.withOpacity(0.3),
-                            ),
-                            validator: (value) =>
-                                value == null ? "Select a Category" : null,
-                            dropdownColor: Colors.white.withOpacity(0.7),
-                            value: selectedValue,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                selectedValue = newValue!;
-                              });
-                            },
-                            items: dropdownItems),
-                      ),
-                      const SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20, left: 20),
-                        child: TextFormField(
-                          controller: _address,
-                          cursorColor: Colors.white,
-                          style:
-                              TextStyle(color: Colors.white.withOpacity(0.9)),
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              Icons.person_outline,
-                              color: Colors.white70,
-                            ),
-                            labelText: "Enter Problem Area Address",
-                            labelStyle:
-                                TextStyle(color: Colors.white.withOpacity(0.9)),
-                            filled: true,
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            fillColor: Colors.white.withOpacity(0.3),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: const BorderSide(
-                                  width: 0, style: BorderStyle.none),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20, left: 20),
-                        child: TextFormField(
-                          controller: _description,
-                          keyboardType: TextInputType.multiline,
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              Icons.person_outline,
-                              color: Colors.white70,
-                            ),
-                            labelText: "Describe The Problem",
-                            labelStyle:
-                                TextStyle(color: Colors.white.withOpacity(0.9)),
-                            filled: true,
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            fillColor: Colors.white.withOpacity(0.3),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: const BorderSide(
-                                  width: 0, style: BorderStyle.none),
-                            ),
-                          ),
-                          maxLines: 3,
-                          // maxLength: 4096,
-                          textInputAction: TextInputAction.done,
-                          validator: (String? text) {
-                            if (text == null || text.isEmpty) {
-                              return 'Pleade Describe The Problem';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-
-                // if (image != null) Image.file(image!),
-                image != null
-                    ? SizedBox(
-                        height: 200,
-                        width: double.infinity,
-                        child: Image.file(image!),
-                      )
-                    : const Text("No Image Selected"),
-
-                const SizedBox(
-                  height: 30,
-                ),
-
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ReportedScreen()));
-                  },
-                  child: const Text(
-                    "Submit",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+        child: Column(
+          children: [
+            Container(
+              height: 800,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.grey, Colors.black12],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight)),
+              child: Center(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 30,
                     ),
-                  ),
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20, left: 20),
+                            child: DropdownButtonFormField(
+                                isExpanded: true,
+                                decoration: InputDecoration(
+                                  prefixIcon: const Icon(
+                                    Icons.person_outline,
+                                    color: Colors.white70,
+                                  ),
+                                  labelText: "Select Category",
+                                  labelStyle: TextStyle(
+                                      color: Colors.white.withOpacity(0.9)),
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.never,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        width: 0, style: BorderStyle.none),
+
+                                    // BorderSide(color: Colors.blue, width: 2),
+
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        width: 0, style: BorderStyle.none),
+
+                                    // BorderSide(color: Colors.blue, width: 2),
+
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white.withOpacity(0.3),
+                                ),
+                                validator: (value) =>
+                                    value == null ? "Select a Category" : null,
+                                dropdownColor: Colors.white.withOpacity(0.7),
+                                value: selectedValue,
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedValue = newValue!;
+                                  });
+                                },
+                                items: dropdownItems),
+                          ),
+                          const SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20, left: 20),
+                            child: TextFormField(
+                              controller: _address,
+                              cursorColor: Colors.white,
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.9)),
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(
+                                  Icons.person_outline,
+                                  color: Colors.white70,
+                                ),
+                                labelText: "Enter Problem Area Address",
+                                labelStyle: TextStyle(
+                                    color: Colors.white.withOpacity(0.9)),
+                                filled: true,
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.never,
+                                fillColor: Colors.white.withOpacity(0.3),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderSide: const BorderSide(
+                                      width: 0, style: BorderStyle.none),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20, left: 20),
+                            child: TextFormField(
+                              controller: _description,
+                              keyboardType: TextInputType.multiline,
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(
+                                  Icons.person_outline,
+                                  color: Colors.white70,
+                                ),
+                                labelText: "Describe The Problem",
+                                labelStyle: TextStyle(
+                                    color: Colors.white.withOpacity(0.9)),
+                                filled: true,
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.never,
+                                fillColor: Colors.white.withOpacity(0.3),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderSide: const BorderSide(
+                                      width: 0, style: BorderStyle.none),
+                                ),
+                              ),
+                              maxLines: 3,
+                              // maxLength: 4096,
+                              textInputAction: TextInputAction.done,
+                              validator: (String? text) {
+                                if (text == null || text.isEmpty) {
+                                  return 'Pleade Describe The Problem';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+
+                    // if (image != null) Image.file(image!),
+                    image != null
+                        ? SizedBox(
+                            height: 200,
+                            width: double.infinity,
+                            child: Image.file(image!),
+                          )
+                        : const Text("No Image Selected"),
+
+                    const SizedBox(
+                      height: 30,
+                    ),
+
+                    ElevatedButton(
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          String message;
+
+                          try {
+                            Reference ref = FirebaseStorage.instance
+                                .ref()
+                                .child("ProblemImage");
+                            UploadTask uploadTask = ref.putFile(image!);
+
+                            TaskSnapshot taskSnapshot =
+                                await Future.value(uploadTask);
+                            var newUrl =
+                                await taskSnapshot.ref.getDownloadURL();
+
+                            print("Uploaded");
+                            final collection = FirebaseFirestore.instance
+                                .collection('problemData');
+
+                            await collection.doc().set({
+                              'category': selectedValue,
+                              'description': _description.text,
+                              'address': _address.text,
+                              'image': newUrl.toString()
+                            });
+
+                            // databaseRef.child('Image').set({
+                            //   'image' : newUrl.toString()
+                            // });
+                            message = "Successful";
+                            print("ahlf");
+                          } catch (_) {
+                            message = "Error";
+                          }
+                          if (message == "Successful") {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ReportedScreen(),
+                            ));
+                          } else {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(SnackBar(content: Text(message)));
+                          }
+                        }
+                      },
+                      child: const Text(
+                        "Submit",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 60,
+                    ),
+
+                    // Text('${Address}'),
+                    // ElevatedButton(
+                    //   onPressed: () async {
+                    //     Position position = await _determinePosition();
+                    //     print(position.latitude);
+
+                    //     location =
+                    //         'Lat: ${position.latitude}, Long:${position.longitude}';
+
+                    //     GetAddressFromLatLong(position);
+
+                    //     setState(() {});
+                    //   },
+                    //   child: Text('Get Current Location'),
+                    // ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 60,
-                ),
-
-                // Text('${Address}'),
-                // ElevatedButton(
-                //   onPressed: () async {
-                //     Position position = await _determinePosition();
-                //     print(position.latitude);
-
-                //     location =
-                //         'Lat: ${position.latitude}, Long:${position.longitude}';
-
-                //     GetAddressFromLatLong(position);
-
-                //     setState(() {});
-                //   },
-                //   child: Text('Get Current Location'),
-                // ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,

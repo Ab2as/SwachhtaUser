@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dob_input_field/dob_input_field.dart';
 import 'package:flutter/material.dart';
-import 'package:swachhta_app/screens/pages/tabs_screen.dart';
+import 'package:swachhta_app/screens/homescreen/tabs_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -325,8 +325,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       String message;
 
                       try {
-                        final collection =
-                            FirebaseFirestore.instance.collection('user');
+                        final collection = FirebaseFirestore.instance
+                            .collection('userProfile');
 
                         await collection.doc().set({
                           'name': _fullname.text,
@@ -336,6 +336,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           'email': _email.text,
                         });
                         message = "Successful";
+                        print("ahlf");
                       } catch (_) {
                         message = "Error";
                       }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swachhta_app/screens/address_page.dart';
-import 'package:swachhta_app/screens/pages/tabs_screen.dart';
+import 'package:swachhta_app/screens/homescreen/tabs_screen.dart';
 
 class RegisteredScreen extends StatelessWidget {
   const RegisteredScreen({super.key});

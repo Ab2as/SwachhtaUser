@@ -1,13 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:swachhta_app/screens/splash_screen.dart';
-
-import 'firebase_options.dart';
+import 'package:swachhta_app/firebase_options.dart';
+import 'package:swachhta_app/screens/address_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    name: 'user',
+    // name: 'user',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: AddressScreen(),
     );
   }
 }

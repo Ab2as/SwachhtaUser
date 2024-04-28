@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "437977542583",
-    "project_id": "swachhta2",
-    "storage_bucket": "swachhta2.appspot.com"
+    "project_number": "199857635319",
+    "project_id": "swachhtaapp-bf94d",
+    "storage_bucket": "swachhtaapp-bf94d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:437977542583:android:82a9bb0fea42fdd62b0232",
+        "mobilesdk_app_id": "1:199857635319:android:92f110aad1a5f5bcd9f8f2",
         "android_client_info": {
           "package_name": "com.example.swachhta_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCZgfvpS2kkYixytymVwpIR5W6HsjOf_Xo"
+          "current_key": "AIzaSyDT7205fjD_pO4xDOGH1tpUGuhsdcaNPzQ"
         }
       ],
       "services": {

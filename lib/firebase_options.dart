@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -44,37 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBlDnxLExpXYKnllr62KHjUFCKk2YFJx18',
-    appId: '1:437977542583:web:8a4ae840f553ab5e2b0232',
-    messagingSenderId: '437977542583',
-    projectId: 'swachhta2',
-    authDomain: 'swachhta2.firebaseapp.com',
-    storageBucket: 'swachhta2.appspot.com',
+    apiKey: 'AIzaSyCpZzcDeO9MoYcI2emxpPJsyAmWNN5TnNs',
+    appId: '1:199857635319:web:caf8150623f917fcd9f8f2',
+    messagingSenderId: '199857635319',
+    projectId: 'swachhtaapp-bf94d',
+    authDomain: 'swachhtaapp-bf94d.firebaseapp.com',
+    storageBucket: 'swachhtaapp-bf94d.appspot.com',
+    measurementId: 'G-5NTB5MB60W',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCZgfvpS2kkYixytymVwpIR5W6HsjOf_Xo',
-    appId: '1:437977542583:android:82a9bb0fea42fdd62b0232',
-    messagingSenderId: '437977542583',
-    projectId: 'swachhta2',
-    storageBucket: 'swachhta2.appspot.com',
+    apiKey: 'AIzaSyDT7205fjD_pO4xDOGH1tpUGuhsdcaNPzQ',
+    appId: '1:199857635319:android:92f110aad1a5f5bcd9f8f2',
+    messagingSenderId: '199857635319',
+    projectId: 'swachhtaapp-bf94d',
+    storageBucket: 'swachhtaapp-bf94d.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBWKfpofOn6r5LA45e5fTh73iy4eHEdUvc',
-    appId: '1:437977542583:ios:6a4f7c2eae1df4432b0232',
-    messagingSenderId: '437977542583',
-    projectId: 'swachhta2',
-    storageBucket: 'swachhta2.appspot.com',
+    apiKey: 'AIzaSyBpTQMGqQs4oUSi38EZyfF0jPGH9iJ4g3g',
+    appId: '1:199857635319:ios:1794cf4bf7e99af0d9f8f2',
+    messagingSenderId: '199857635319',
+    projectId: 'swachhtaapp-bf94d',
+    storageBucket: 'swachhtaapp-bf94d.appspot.com',
     iosBundleId: 'com.example.swachhtaApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBWKfpofOn6r5LA45e5fTh73iy4eHEdUvc',
-    appId: '1:437977542583:ios:6a4f7c2eae1df4432b0232',
-    messagingSenderId: '437977542583',
-    projectId: 'swachhta2',
-    storageBucket: 'swachhta2.appspot.com',
+    apiKey: 'AIzaSyBpTQMGqQs4oUSi38EZyfF0jPGH9iJ4g3g',
+    appId: '1:199857635319:ios:1794cf4bf7e99af0d9f8f2',
+    messagingSenderId: '199857635319',
+    projectId: 'swachhtaapp-bf94d',
+    storageBucket: 'swachhtaapp-bf94d.appspot.com',
     iosBundleId: 'com.example.swachhtaApp',
   );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCpZzcDeO9MoYcI2emxpPJsyAmWNN5TnNs',
+    appId: '1:199857635319:web:d4b489950191abffd9f8f2',
+    messagingSenderId: '199857635319',
+    projectId: 'swachhtaapp-bf94d',
+    authDomain: 'swachhtaapp-bf94d.firebaseapp.com',
+    storageBucket: 'swachhtaapp-bf94d.appspot.com',
+    measurementId: 'G-7NBRYTQ9NT',
+  );
+
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:swachhta_app/screens/pages/tabs_screen.dart';
+import 'package:swachhta_app/screens/homescreen/tabs_screen.dart';
 
 class ReportedScreen extends StatefulWidget {
   const ReportedScreen({super.key});
