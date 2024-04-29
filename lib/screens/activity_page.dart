@@ -19,7 +19,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
         ),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: Colors.grey,
+        backgroundColor: Color.fromARGB(255, 30, 151, 125),
         actions: [
           IconButton(
             onPressed: () {
@@ -37,10 +37,11 @@ class _ActivityScreenState extends State<ActivityScreen> {
       ),
       body: Container(
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.grey, Colors.black12],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight)),
+          gradient: LinearGradient(colors: [
+            Color.fromARGB(255, 33, 202, 165),
+            Color.fromARGB(255, 21, 84, 35)
+          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        ),
         child: Center(
           child: Column(
             children: [
@@ -49,7 +50,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 width: double.infinity,
                 margin: const EdgeInsets.only(top: 20, right: 10, left: 10),
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 223, 111, 111),
+                  color: Color.fromARGB(255, 53, 107, 80),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const Row(
@@ -112,7 +113,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 width: double.infinity,
                 margin: const EdgeInsets.only(top: 20, right: 10, left: 10),
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 223, 111, 111),
+                  color: Color.fromARGB(255, 222, 79, 79),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const Row(
@@ -175,7 +176,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 width: double.infinity,
                 margin: const EdgeInsets.only(top: 20, right: 10, left: 10),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 84, 143, 55),
+                  color: Color.fromARGB(255, 53, 107, 80),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const Row(

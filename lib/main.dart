@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:swachhta_app/firebase_options.dart';
-import 'package:swachhta_app/screens/address_page.dart';
+import 'package:swachhta_app/screens/reported_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AddressScreen(),
+      home: ReportedScreen(),
     );
   }
 }

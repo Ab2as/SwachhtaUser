@@ -19,14 +19,15 @@ class _ReportedScreenState extends State<ReportedScreen> {
         ),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: Colors.grey,
+        backgroundColor: Color.fromARGB(255, 30, 151, 125),
       ),
       body: Container(
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.grey, Colors.black12],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight)),
+          gradient: LinearGradient(colors: [
+            Color.fromARGB(255, 33, 202, 165),
+            Color.fromARGB(255, 21, 84, 35)
+          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        ),
         child: Center(
           child: Column(
             children: [
@@ -45,7 +46,7 @@ class _ReportedScreenState extends State<ReportedScreen> {
                 width: double.infinity,
                 margin: const EdgeInsets.only(right: 20, left: 20),
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 166, 71, 64),
+                  color: Color.fromARGB(255, 64, 166, 144),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Column(
@@ -159,9 +160,14 @@ class _ReportedScreenState extends State<ReportedScreen> {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => TabsScreen(userId: '')));
                   },
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.green),
                   child: const Text(
                     "OK",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ))
             ],
           ),

@@ -24,7 +24,7 @@ class RegisteredScreen extends StatelessWidget {
           ),
           centerTitle: true,
           elevation: 0.0,
-          backgroundColor: const Color.fromARGB(255, 33, 202, 165),
+          backgroundColor: const Color.fromARGB(255, 30, 151, 125),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -76,7 +76,10 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category:
+                                      "Yellow Spot (Public Urination Spot)",
+                                )));
                       },
                     ),
                     InkWell(
@@ -114,7 +117,10 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category:
+                                      "Overflow of Sewerage or Storm Water",
+                                )));
                       },
                     ),
                     InkWell(
@@ -152,7 +158,9 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category: "Dead Animal(s)",
+                                )));
                       },
                     ),
                     InkWell(
@@ -190,7 +198,9 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category: "Dustbins Not Cleaned",
+                                )));
                       },
                     ),
                     InkWell(
@@ -228,7 +238,9 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category: "Open Manholes Or Drains",
+                                )));
                       },
                     ),
                     InkWell(
@@ -266,7 +278,9 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category: "Sweeping not done",
+                                )));
                       },
                     ),
                     InkWell(
@@ -304,7 +318,9 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category: "Electricity Problem",
+                                )));
                       },
                     ),
                     InkWell(
@@ -342,7 +358,9 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category: "No water supply",
+                                )));
                       },
                     ),
                     InkWell(
@@ -380,7 +398,9 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category: "Stagnant Water On The Road",
+                                )));
                       },
                     ),
                     InkWell(
@@ -419,7 +439,10 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category:
+                                      "Improper Disposal of Fecal Waste/Septage",
+                                )));
                       },
                     ),
                     InkWell(
@@ -457,7 +480,9 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category: "Burning of Garbage in Open Space",
+                                )));
                       },
                     ),
                     InkWell(
@@ -495,7 +520,10 @@ class RegisteredScreen extends StatelessWidget {
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => AddressScreen()));
+                            builder: (context) => AddressScreen(
+                                  category:
+                                      "Debris Removal/Construction Material",
+                                )));
                       },
                     ),
                   ],

@@ -8,7 +8,9 @@ import 'package:swachhta_app/screens/app_image_pick.dart';
 import 'package:swachhta_app/screens/reported_page.dart';
 
 class AddressScreen extends StatefulWidget {
-  const AddressScreen({super.key});
+  var category = "";
+
+  AddressScreen({required this.category, super.key});
 
   @override
   State<AddressScreen> createState() => _AddressScreenState();
@@ -84,7 +86,7 @@ class _AddressScreenState extends State<AddressScreen> {
         ),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: Colors.grey,
+        backgroundColor: Color.fromARGB(255, 30, 151, 125),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -92,10 +94,11 @@ class _AddressScreenState extends State<AddressScreen> {
             Container(
               height: 800,
               decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.grey, Colors.black12],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight)),
+                gradient: LinearGradient(colors: [
+                  Color.fromARGB(255, 33, 202, 165),
+                  Color.fromARGB(255, 21, 84, 35)
+                ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+              ),
               child: Center(
                 child: Column(
                   children: [
@@ -108,49 +111,78 @@ class _AddressScreenState extends State<AddressScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          // Padding(
+                          //   padding: const EdgeInsets.only(right: 20, left: 20),
+                          //   child: DropdownButtonFormField(
+                          //       isExpanded: true,
+                          //       decoration: InputDecoration(
+                          //         prefixIcon: const Icon(
+                          //           Icons.person_outline,
+                          //           color: Colors.white70,
+                          //         ),
+                          //         labelText: "Select Category",
+                          //         labelStyle: TextStyle(
+                          //             color: Colors.white.withOpacity(0.9)),
+                          //         floatingLabelBehavior:
+                          //             FloatingLabelBehavior.never,
+                          //         enabledBorder: OutlineInputBorder(
+                          //           borderSide: const BorderSide(
+                          //               width: 0, style: BorderStyle.none),
+
+                          //           // BorderSide(color: Colors.blue, width: 2),
+
+                          //           borderRadius: BorderRadius.circular(30),
+                          //         ),
+                          //         border: OutlineInputBorder(
+                          //           borderSide: const BorderSide(
+                          //               width: 0, style: BorderStyle.none),
+
+                          //           // BorderSide(color: Colors.blue, width: 2),
+
+                          //           borderRadius: BorderRadius.circular(30),
+                          //         ),
+                          //         filled: true,
+                          //         fillColor: Colors.white.withOpacity(0.3),
+                          //       ),
+                          //       validator: (value) =>
+                          //           value == null ? "Select a Category" : null,
+                          //       dropdownColor: Colors.white.withOpacity(0.7),
+                          //       value: selectedValue,
+                          //       onChanged: (String? newValue) {
+                          //         setState(() {
+                          //           selectedValue = newValue!;
+                          //         });
+                          //       },
+                          //       items: dropdownItems),
+                          // ),
+
                           Padding(
                             padding: const EdgeInsets.only(right: 20, left: 20),
-                            child: DropdownButtonFormField(
-                                isExpanded: true,
-                                decoration: InputDecoration(
-                                  prefixIcon: const Icon(
-                                    Icons.person_outline,
-                                    color: Colors.white70,
-                                  ),
-                                  labelText: "Select Category",
-                                  labelStyle: TextStyle(
-                                      color: Colors.white.withOpacity(0.9)),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.never,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        width: 0, style: BorderStyle.none),
-
-                                    // BorderSide(color: Colors.blue, width: 2),
-
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        width: 0, style: BorderStyle.none),
-
-                                    // BorderSide(color: Colors.blue, width: 2),
-
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  filled: true,
-                                  fillColor: Colors.white.withOpacity(0.3),
+                            child: TextFormField(
+                              initialValue: widget.category,
+                              readOnly: true,
+                              cursorColor: Colors.white,
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.9)),
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(
+                                  Icons.person_outline,
+                                  color: Colors.white70,
                                 ),
-                                validator: (value) =>
-                                    value == null ? "Select a Category" : null,
-                                dropdownColor: Colors.white.withOpacity(0.7),
-                                value: selectedValue,
-                                onChanged: (String? newValue) {
-                                  setState(() {
-                                    selectedValue = newValue!;
-                                  });
-                                },
-                                items: dropdownItems),
+                                labelText: "Enter Problem Area Address",
+                                labelStyle: TextStyle(
+                                    color: Colors.white.withOpacity(0.9)),
+                                filled: true,
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.never,
+                                fillColor: Colors.white.withOpacity(0.3),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  borderSide: const BorderSide(
+                                      width: 0, style: BorderStyle.none),
+                                ),
+                              ),
+                            ),
                           ),
                           const SizedBox(height: 20),
                           Padding(
@@ -258,7 +290,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                 .collection('problemData');
 
                             await collection.doc().set({
-                              'category': selectedValue,
+                              'category': widget.category,
                               'description': _description.text,
                               'address': _address.text,
                               'image': newUrl.toString()
