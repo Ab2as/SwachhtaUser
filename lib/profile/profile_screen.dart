@@ -12,6 +12,7 @@ class ProfileScreen extends StatelessWidget {
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 30, 151, 125),
         title: Text(
           "Profile",
           style: Theme.of(context).textTheme.headlineMedium,

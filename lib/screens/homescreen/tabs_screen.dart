@@ -1,7 +1,7 @@
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:swachhta_app/profile/profile_screen.dart';
 import 'package:swachhta_app/screens/activity_page.dart';
+import 'package:swachhta_app/screens/editProfileA.dart';
 import 'package:swachhta_app/screens/homescreen/home_screen_worker.dart';
 import 'package:swachhta_app/screens/registered_screen.dart';
 
@@ -38,7 +38,7 @@ class _TabsScreenState extends State<TabsScreen> {
       activePage = ActivityScreen();
     }
     if (_selectedPageIndex == 3) {
-      activePage = ProfileScreen();
+      activePage = EditProfileA();
     }
 
     return Scaffold(

@@ -13,8 +13,6 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController _fullname = TextEditingController();
   TextEditingController _mobileno = TextEditingController();
-  // TextEditingController _dob = TextEditingController();
-  // TextEditingController _sex = TextEditingController();
   TextEditingController _address = TextEditingController();
   TextEditingController _pincode = TextEditingController();
   TextEditingController _email = TextEditingController();
@@ -63,317 +61,326 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-    return Scaffold(
-      key: _scaffoldKey,
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(colors: [
-            Color.fromARGB(255, 33, 202, 165),
-            Color.fromARGB(255, 21, 84, 35)
-          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-        ),
-        padding: const EdgeInsets.only(left: 40, right: 40),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Form(
-                key: formkey,
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        height: 70,
-                      ),
-                      const Center(
-                          child: Text(
-                        "Personal Details",
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 3, 85, 66)),
-                      )),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      TextFormField(
-                        controller: _fullname,
-                        cursorColor: Colors.white,
-                        style: TextStyle(color: Colors.white.withOpacity(0.9)),
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.person_outline,
-                            color: Colors.white70,
-                          ),
-                          labelText: "Enter your full name",
-                          labelStyle:
-                              TextStyle(color: Colors.white.withOpacity(0.9)),
-                          filled: true,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          fillColor: Colors.white.withOpacity(0.3),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: const BorderSide(
-                                  width: 0, style: BorderStyle.none)),
+    return SafeArea(
+      child: Scaffold(
+        key: _scaffoldKey,
+        body: Container(
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Color.fromARGB(255, 33, 202, 165),
+              Color.fromARGB(255, 21, 84, 35)
+            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+          ),
+          padding: const EdgeInsets.only(left: 40, right: 40),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Form(
+                  key: formkey,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          height: 70,
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty ||
-                              !RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$")
-                                  .hasMatch(value!)) {
-                            return "Enter correct name";
-                          } else {
-                            return null;
-                          }
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        controller: _mobileno,
-                        cursorColor: Colors.white,
-                        keyboardType: TextInputType.number,
-                        style: TextStyle(color: Colors.white.withOpacity(0.9)),
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.person_outline,
-                            color: Colors.white70,
-                          ),
-                          labelText: "Enter your mobile number",
-                          labelStyle:
-                              TextStyle(color: Colors.white.withOpacity(0.9)),
-                          filled: true,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          fillColor: Colors.white.withOpacity(0.3),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            borderSide: const BorderSide(
-                                width: 0, style: BorderStyle.none),
-                          ),
+                        const Center(
+                            child: Text(
+                          "Personal Details",
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 3, 85, 66)),
+                        )),
+                        const SizedBox(
+                          height: 30,
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty ||
-                              !RegExp(r"^[0-9]{10}$").hasMatch(value!)) {
-                            return "Enter correct mobile number";
-                          } else {
-                            return null;
-                          }
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      DropdownButtonFormField(
+                        TextFormField(
+                          controller: _fullname,
+                          cursorColor: Colors.white,
+                          style:
+                              TextStyle(color: Colors.white.withOpacity(0.9)),
                           decoration: InputDecoration(
                             prefixIcon: const Icon(
                               Icons.person_outline,
                               color: Colors.white70,
                             ),
-                            labelText: "Enter your Gender",
+                            labelText: "Enter your full name",
                             labelStyle:
                                 TextStyle(color: Colors.white.withOpacity(0.9)),
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  width: 0, style: BorderStyle.none),
-                              // BorderSide(color: Colors.blue, width: 2),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  width: 0, style: BorderStyle.none),
-                              // BorderSide(color: Colors.blue, width: 2),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
                             filled: true,
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
                             fillColor: Colors.white.withOpacity(0.3),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none)),
                           ),
-                          validator: (value) =>
-                              value == null ? "Select a Sex" : null,
-                          dropdownColor: Colors.white.withOpacity(0.3),
-                          value: selectedValue,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              selectedValue = newValue!;
-                            });
-                          },
-                          items: dropdownItems),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      DOBInputField(
-                        firstDate: DateTime(1900),
-                        lastDate: DateTime.now(),
-                        showLabel: true,
-                        showCursor: true,
-                        autovalidateMode: AutovalidateMode.always,
-                        fieldLabelText: "Enter your DOB",
-                        inputDecoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.person_outline,
-                            color: Colors.white70,
-                          ),
-                          labelStyle:
-                              TextStyle(color: Colors.white.withOpacity(0.9)),
-                          filled: true,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          fillColor: Colors.white.withOpacity(0.3),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            borderSide: const BorderSide(
-                                width: 0, style: BorderStyle.none),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        controller: _address,
-                        cursorColor: Colors.white,
-                        style: TextStyle(color: Colors.white.withOpacity(0.9)),
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.person_outline,
-                            color: Colors.white70,
-                          ),
-                          labelText: "Enter your address",
-                          labelStyle:
-                              TextStyle(color: Colors.white.withOpacity(0.9)),
-                          filled: true,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          fillColor: Colors.white.withOpacity(0.3),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: const BorderSide(
-                                  width: 0, style: BorderStyle.none)),
-                        ),
-                        // validator: (value) {
-                        //   if (value!.isEmpty ||
-                        //       !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
-                        //           .hasMatch(value!)) {
-                        //     return "Enter correct email address";
-                        //   } else {
-                        //     return null;
-                        //   }
-                        // },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        controller: _pincode,
-                        keyboardType: TextInputType.number,
-                        cursorColor: Colors.white,
-                        style: TextStyle(color: Colors.white.withOpacity(0.9)),
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.person_outline,
-                            color: Colors.white70,
-                          ),
-                          labelText: "Enter your pincode",
-                          labelStyle:
-                              TextStyle(color: Colors.white.withOpacity(0.9)),
-                          filled: true,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          fillColor: Colors.white.withOpacity(0.3),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: const BorderSide(
-                                  width: 0, style: BorderStyle.none)),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty ||
-                              !RegExp(r'^[1-9][0-9]{5}$').hasMatch(value!)) {
-                            return "Enter correct pincode";
-                          } else {
-                            return null;
-                          }
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        controller: _email,
-                        cursorColor: Colors.white,
-                        style: TextStyle(color: Colors.white.withOpacity(0.9)),
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(
-                            Icons.person_outline,
-                            color: Colors.white70,
-                          ),
-                          labelText: "Enter your email",
-                          labelStyle:
-                              TextStyle(color: Colors.white.withOpacity(0.9)),
-                          filled: true,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          fillColor: Colors.white.withOpacity(0.3),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                              borderSide: const BorderSide(
-                                  width: 0, style: BorderStyle.none)),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty ||
-                              !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
-                                  .hasMatch(value!)) {
-                            return "Enter correct email address";
-                          } else {
-                            return null;
-                          }
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      // ElevatedButton(
-                      //   onPressed: () {
-                      //     print(_fullname.text);
-                      //   },
-                      //   child: Text("Submit"),
-                      // ),
-                      ElevatedButton(
-                        onPressed: () async {
-                          if (formkey.currentState!.validate()) {
-                            String message;
-
-                            try {
-                              final collection = FirebaseFirestore.instance
-                                  .collection('userProfile');
-
-                              await collection.doc().set({
-                                'name': _fullname.text,
-                                'mobileno': _mobileno.text,
-                                'address': _address.text,
-                                'pincode': _pincode.text,
-                                'email': _email.text,
-                              });
-                              message = "Successful";
-                              print("ahlf");
-                            } catch (_) {
-                              message = "Error";
-                            }
-                            if (message == "Successful") {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    TabsScreen(userId: 'userId'),
-                              ));
+                          validator: (value) {
+                            if (value!.isEmpty ||
+                                !RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$")
+                                    .hasMatch(value!)) {
+                              return "Enter correct name";
                             } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(message)));
+                              return null;
                             }
-                          }
-                        },
-                        child: Text("Submit"),
-                      ),
-                    ],
+                          },
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          controller: _mobileno,
+                          cursorColor: Colors.white,
+                          keyboardType: TextInputType.number,
+                          style:
+                              TextStyle(color: Colors.white.withOpacity(0.9)),
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.person_outline,
+                              color: Colors.white70,
+                            ),
+                            labelText: "Enter your mobile number",
+                            labelStyle:
+                                TextStyle(color: Colors.white.withOpacity(0.9)),
+                            filled: true,
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            fillColor: Colors.white.withOpacity(0.3),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                  width: 0, style: BorderStyle.none),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty ||
+                                !RegExp(r"^[0-9]{10}$").hasMatch(value!)) {
+                              return "Enter correct mobile number";
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                Icons.person_outline,
+                                color: Colors.white70,
+                              ),
+                              labelText: "Enter your Gender",
+                              labelStyle: TextStyle(
+                                  color: Colors.white.withOpacity(0.9)),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none),
+                                // BorderSide(color: Colors.blue, width: 2),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none),
+                                // BorderSide(color: Colors.blue, width: 2),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              filled: true,
+                              fillColor: Colors.white.withOpacity(0.3),
+                            ),
+                            validator: (value) =>
+                                value == null ? "Select a Sex" : null,
+                            dropdownColor: Colors.white.withOpacity(0.3),
+                            value: selectedValue,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedValue = newValue!;
+                              });
+                            },
+                            items: dropdownItems),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        DOBInputField(
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime.now(),
+                          showLabel: true,
+                          showCursor: true,
+                          autovalidateMode: AutovalidateMode.always,
+                          fieldLabelText: "Enter your DOB",
+                          inputDecoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.person_outline,
+                              color: Colors.white70,
+                            ),
+                            labelStyle:
+                                TextStyle(color: Colors.white.withOpacity(0.9)),
+                            filled: true,
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            fillColor: Colors.white.withOpacity(0.3),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                  width: 0, style: BorderStyle.none),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          controller: _address,
+                          cursorColor: Colors.white,
+                          style:
+                              TextStyle(color: Colors.white.withOpacity(0.9)),
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.person_outline,
+                              color: Colors.white70,
+                            ),
+                            labelText: "Enter your address",
+                            labelStyle:
+                                TextStyle(color: Colors.white.withOpacity(0.9)),
+                            filled: true,
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            fillColor: Colors.white.withOpacity(0.3),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none)),
+                          ),
+                          // validator: (value) {
+                          //   if (value!.isEmpty ||
+                          //       !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
+                          //           .hasMatch(value!)) {
+                          //     return "Enter correct email address";
+                          //   } else {
+                          //     return null;
+                          //   }
+                          // },
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          controller: _pincode,
+                          keyboardType: TextInputType.number,
+                          cursorColor: Colors.white,
+                          style:
+                              TextStyle(color: Colors.white.withOpacity(0.9)),
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.person_outline,
+                              color: Colors.white70,
+                            ),
+                            labelText: "Enter your pincode",
+                            labelStyle:
+                                TextStyle(color: Colors.white.withOpacity(0.9)),
+                            filled: true,
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            fillColor: Colors.white.withOpacity(0.3),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none)),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty ||
+                                !RegExp(r'^[1-9][0-9]{5}$').hasMatch(value!)) {
+                              return "Enter correct pincode";
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          controller: _email,
+                          cursorColor: Colors.white,
+                          style:
+                              TextStyle(color: Colors.white.withOpacity(0.9)),
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.person_outline,
+                              color: Colors.white70,
+                            ),
+                            labelText: "Enter your email",
+                            labelStyle:
+                                TextStyle(color: Colors.white.withOpacity(0.9)),
+                            filled: true,
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            fillColor: Colors.white.withOpacity(0.3),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none)),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty ||
+                                !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
+                                    .hasMatch(value!)) {
+                              return "Enter correct email address";
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        // ElevatedButton(
+                        //   onPressed: () {
+                        //     print(_fullname.text);
+                        //   },
+                        //   child: Text("Submit"),
+                        // ),
+                        ElevatedButton(
+                          onPressed: () async {
+                            if (formkey.currentState!.validate()) {
+                              String message;
+
+                              try {
+                                final collection = FirebaseFirestore.instance
+                                    .collection('userProfile');
+
+                                await collection.doc().set({
+                                  'name': _fullname.text,
+                                  'mobileno': _mobileno.text,
+                                  'address': _address.text,
+                                  'pincode': _pincode.text,
+                                  'email': _email.text,
+                                });
+                                message = "Successful";
+                                print("ahlf");
+                              } catch (_) {
+                                message = "Error";
+                              }
+                              if (message == "Successful") {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      TabsScreen(userId: 'userId'),
+                                ));
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text(message)));
+                              }
+                            }
+                          },
+                          child: Text("Submit"),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

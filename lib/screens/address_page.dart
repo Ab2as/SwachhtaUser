@@ -243,7 +243,7 @@ class _AddressScreenState extends State<AddressScreen> {
                               textInputAction: TextInputAction.done,
                               validator: (String? text) {
                                 if (text == null || text.isEmpty) {
-                                  return 'Pleade Describe The Problem';
+                                  return 'Please Describe The Problem';
                                 }
                                 return null;
                               },

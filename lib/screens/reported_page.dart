@@ -46,7 +46,7 @@ class _ReportedScreenState extends State<ReportedScreen> {
                 width: double.infinity,
                 margin: const EdgeInsets.only(right: 20, left: 20),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 64, 166, 144),
+                  color: Color.fromARGB(255, 51, 132, 114),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Column(
